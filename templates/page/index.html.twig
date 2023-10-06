@@ -5,6 +5,7 @@
 {% block body %}
     {% for post in posts %}
         <h3><a href="/post/view/{{ post.id }}">{{ post.title }}</a></h3>
+        <p>by {{ post.userId|username }}</p>
         <p><i>{{ post.createdAt|date }}</i></p>
         <p>{{ post.text|ellipsis }}</p>
 {{ include('/delete/_delete.html.twig') }}

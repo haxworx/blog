@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Persistence\ManagerRegistry;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
@@ -50,9 +52,7 @@ class PostController extends AbstractController
 
         $post = $repository->findOneById($id);
         if (!$post) {
-            throw $this->createNotFoundException(
-                'Post does not exist.'
-            );
+            throw $this->createNotFoundException('Post does not exist.');
         }
 
         $form = $this->createForm(PostType::class, $post);
@@ -72,9 +72,7 @@ class PostController extends AbstractController
     {
         $post = $repository->findOneById($id);
         if (!$post) {
-            throw $this->createNotFoundException(
-                'Post does not exist.'
-            );
+            throw $this->createNotFoundException('Post does not exist.');
         }
 
         return $this->render('post/view.html.twig', [
@@ -93,9 +91,7 @@ class PostController extends AbstractController
 
         $post = $repository->findOneById($id);
         if (!$post) {
-            throw $this->createNotFoundException(
-                'Post does not exist.'
-            );
+            throw $this->createNotFoundException('Post does not exist.');
         }
 
         $repository->remove($post, true);

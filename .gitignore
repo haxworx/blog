@@ -20,3 +20,5 @@
 ###< symfony/phpunit-bridge ###
 
 *.swp
+/tools
+.php-cs-fixer.cache
