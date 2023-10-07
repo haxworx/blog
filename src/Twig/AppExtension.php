@@ -22,8 +22,8 @@ class AppExtension extends AbstractExtension
 
     public function ellipsis(?string $text): string
     {
-        if (strlen($text) >= 32) {
-            return substr($text, 0, 32) . '...';
+        if (strlen($text) >= 128) {
+            return substr($text, 0, 128) . '...';
         }
 
         return $text;
