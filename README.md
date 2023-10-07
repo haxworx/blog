@@ -6,6 +6,15 @@ There is no client-side Javascript.
 
 This took around one day of development.
 
+## Installation
+
+$ composer install
+$ npm install
+$ npm run dev
+$ docker-compose up
+
+Then browse to http://localhost:8080
+
 ## Contributing Guide
 
 The recommended way to install PHP CS Fixer is to use [Composer](https://getcomposer.org/download/)
