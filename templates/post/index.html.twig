@@ -2,12 +2,13 @@
 
 {% block title %}Hello PostController!{% endblock %}
 
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
 {% block body %}
 <h1>Post</h1>
 <hr>
 {{ form_start(form) }}
 {{ form_row(form.title) }}
 {{ form_row(form.text) }}
-<button type="submit">Post</button>
+<button type="submit" class="btn btn-primary">Post</button>
 {{ form_end(form) }}
 {% endblock %}
