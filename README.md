@@ -1,3 +1,11 @@
+## Blog
+
+This is a simple blog application written in Symfony 6 and PHP.
+
+There is no client-side Javascript.
+
+This took around one day of development.
+
 ## Contributing Guide
 
 The recommended way to install PHP CS Fixer is to use [Composer](https://getcomposer.org/download/)
