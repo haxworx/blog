@@ -10,13 +10,20 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Notifier\Notification\Notification;
+use Symfony\Component\Notifier\NotifierInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserSettingsController extends AbstractController
 {
     #[Route('/user/settings', name: 'app_user_settings')]
-    public function index(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
+    public function index(
+        Request $request,
+        ManagerRegistry $doctrine,
+        UserPasswordHasherInterface $passwordHasher,
+        NotifierInterface $notifier,
+    ): Response
     {
         $user = $this->getUser();
 
@@ -26,7 +33,9 @@ class UserSettingsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($passwordHasher->isPasswordValid($user, $settings->getOldPassword())) {
+            if (!$passwordHasher->isPasswordValid($user, $settings->getOldPassword())) {
+                $notifier->send(new Notification('Incorrect existing password.', ['browser']));
+            } else {
                 $hashedPassword = $passwordHasher->hashPassword(
                     $user,
                     $settings->getPlainPassword(),
@@ -35,6 +44,7 @@ class UserSettingsController extends AbstractController
                 $em = $doctrine->getManager();
                 $em->persist($user);
                 $em->flush();
+                $notifier->send(new Notification('Password updated.', ['browser']));
             }
         }
 

@@ -7,6 +7,8 @@ namespace App\Controller;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Notifier\Notification\Notification;
+use Symfony\Component\Notifier\NotifierInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
+    public function __construct(private NotifierInterface $notifier)
+    {
+    }
+
     #[Route('/post', name: 'app_post')]
     public function create(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -33,6 +39,8 @@ class PostController extends AbstractController
             $em = $doctrine->getManager();
             $em->persist($post);
             $em->flush();
+
+            $this->notifier->send(new Notification('Post created.', ['browser']));
 
             return $this->redirectToRoute('app_index');
         }
@@ -60,6 +68,7 @@ class PostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $repository->save($post, true);
+            $this->notifier->send(new Notification('Post edited.', ['browser']));
         }
 
         return $this->render('post/index.html.twig', [
@@ -95,6 +104,8 @@ class PostController extends AbstractController
         }
 
         $repository->remove($post, true);
+
+        $this->notifier->send(new Notification('Post deleted.', ['browser']));
 
         return $this->redirectToRoute('app_index');
     }
