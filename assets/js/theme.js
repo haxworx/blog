@@ -1,2 +1,2 @@
 import '../scss/theme.scss';
-import 'bootstrap/js/dist/alert.js';
+import 'bootstrap/dist/js/bootstrap.js';
