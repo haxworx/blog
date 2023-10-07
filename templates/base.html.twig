@@ -70,7 +70,7 @@
         </header>
 {% if is_granted('ROLE_USER') %}
          <div class="container mt-5" align="right">
-             <p>Logged in as {{ app.user.email }}.</p>
+             <p>Welcome {{ app.user.id|username }}.</p>
          </div>
 {% endif %}
         <main role="main" class="container mt-5" id="main">
