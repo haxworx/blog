@@ -42,7 +42,7 @@ class PostController extends AbstractController
 
             $this->notifier->send(new Notification('Post created.', ['browser']));
 
-            return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('app_blog');
         }
 
         return $this->render('post/index.html.twig', [
@@ -107,6 +107,6 @@ class PostController extends AbstractController
 
         $this->notifier->send(new Notification('Post deleted.', ['browser']));
 
-        return $this->redirectToRoute('app_index');
+        return $this->redirectToRoute('app_blog');
     }
 }

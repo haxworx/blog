@@ -15,11 +15,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    public function index(PostRepository $repository): Response
+    public function index(): Response
+    {
+        return $this->render('page/index.html.twig', [
+        ]);
+    }
+
+    #[Route('/blog', name: 'app_blog')]
+    public function blog(PostRepository $repository): Response
     {
         $posts = $repository->findAll();
 
-        return $this->render('page/index.html.twig', [
+        return $this->render('page/blog.html.twig', [
             'posts' => $posts,
         ]);
     }

@@ -1,2 +1,2 @@
-import '../scss/theme.scss';
-import 'bootstrap/dist/js/bootstrap.js';
+//import '../scss/theme.scss';
+//import 'bootstrap/dist/js/bootstrap.js';

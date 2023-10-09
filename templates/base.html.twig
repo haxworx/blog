@@ -12,63 +12,78 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+    <style>
+        body {
+            margin: auto;
+            width: 80%;
+        }
+        h1, h2, h3, h4, a {
+            color: darkblue;
+        }
+        hr {
+            border-top: 1px solid black;
+            border-bottom: none;
+        }
+        button {
+            border: 1px solid black;
+            background-color: lightgrey;
+            padding: 4px;
+            margin-top: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
     </head>
     <body>
         <header class="header">
             <nav class="navbar navbar-expand-sm navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand me-4 pr-2" href="{{ path('app_index') }}">
-                    </a>
-
-                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#header-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Show/Hide navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="header-menu">
-                        <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
+                    <table style="padding: 8px;">
+                        <tr>
+                            <td>
                                 <a class="nav-link" title="Home" href="{{ path('app_index') }}">
                                     Home
                                 </a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
+                            </td>
+                            <td>
                                 <a class="nav-link" title="" href="{{ path('app_entropy') }}">
                                     Entropy
                                 </a>
-                            </li>
-                        </ul>
+                            </td>
+                            <td>
+                                <a class="nav-link" title="Home" href="{{ path('app_blog') }}">
+                                    Blog
+                                </a>
+                            </td>
 {% if is_granted('ROLE_USER') %}
-                        <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" title="View Stats" href="{{ path('app_post') }}">
+                            <td>
+                                <a class="nav-link" title="" href="{{ path('app_post') }}">
                                    Post
                                 </a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav ms-auto">
-                            <li class="nav-item">
+                            </td>
+                            <td>
                                 <a class="nav-link" href="{{ path('app_user_settings') }}">
                                     Settings
                                 </a>
-                            </li>
-                            <li class="nav-item">
+                            </td>
+                            <td>
                                 <a class="nav-link" href="{{ path('app_logout') }}">
                                     Logout
                                 </a>
-                            </li>
-                        </ul>
+                            </td>
 {% else %}
-                        <ul class="nav navbar-nav ms-auto">
-                            <li class="nav-item">
+                            <td>
                                 <a class="nav-link" href="{{ path('app_login') }}">
                                     Login
                                 </a>
-                            </li>
-                        </ul>
+                            </td>
 {% endif %}
-                    </div>
+                        </tr>
+                    </table>
                 </div>
             </nav>
             <nav class="bg-light border-bottom">
@@ -83,8 +98,7 @@
 {% endif %}
         <main role="main" class="container mt-5" id="main">
         {% for message in app.flashes('notification') %}
-            <div class="alert alert-info alter-dismissible d-flex align-items-center fade show">:
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="alert alert-info alter-dismissible d-flex align-items-center fade show">
             {{ message }}
             </div>
         {% endfor %}
