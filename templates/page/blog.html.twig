@@ -5,7 +5,6 @@
 {% block body %}
 {% set n = posts|length %}
 {% set i = 1 %}
-{{ n }}
     {% for post in posts %}
         <h4><a href="/post/view/{{ post.id }}">{{ post.title }}</a></h4>
         <p>by {{ post.userId|username }}</p>
