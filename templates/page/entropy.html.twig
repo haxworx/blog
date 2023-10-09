@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+{{ form_row(form.message)  }}
+{{ form_row(form.length) }}
+<button type="submit" class="btn btn-sm btn-primary mt-3">Generate</button>
+{{ form_end(form) }}
+{% if text %}
+<hr>
+<p>{{ text }}</p>
+{% endif %}
+{% endblock %}
