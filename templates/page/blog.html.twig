@@ -3,13 +3,19 @@
 {% block title %}Welcome{% endblock %}
 
 {% block body %}
+{% set n = posts|length %}
+{% set i = 1 %}
+{{ n }}
     {% for post in posts %}
         <h4><a href="/post/view/{{ post.id }}">{{ post.title }}</a></h4>
         <p>by {{ post.userId|username }}</p>
         <p><i>{{ post.createdAt|date }}</i></p>
         <p>{{ post.text|ellipsis }}</p>
 {{ include('/delete/_delete.html.twig') }}
+    {% if i != n %}
     <hr>
+    {% endif %}
+    {% set i = i + 1 %}
     {% else %}
     <p>There are no posts to view.</p>
     {% endfor %}
