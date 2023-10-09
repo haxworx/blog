@@ -19,9 +19,21 @@
             width: 80%;
             font-size: 11pt;
         }
-        h1, h2, h3, h4, a {
+        h1, h2, h3, h4 {
             color: darkblue;
         }
+        a {
+            color: darkgreen;
+        }
+
+        a.header {
+            font-size: 12pt;
+        }
+
+        td {
+            padding-right: 10px;
+        }
+
         hr {
             border-top: 1px solid black;
             border-bottom: none;
@@ -45,42 +57,42 @@
         <header class="header">
             <nav class="navbar navbar-expand-sm navbar-light bg-light">
                 <div class="container-fluid">
-                    <table style="padding: 8px;">
+                    <table>
                         <tr>
                             <td>
-                                <a class="nav-link" title="Home" href="{{ path('app_index') }}">
+                                <a class="header" title="Home" href="{{ path('app_index') }}">
                                     Home
                                 </a>
                             </td>
                             <td>
-                                <a class="nav-link" title="" href="{{ path('app_entropy') }}">
+                                <a class="header" title="" href="{{ path('app_entropy') }}">
                                     Entropy
                                 </a>
                             </td>
                             <td>
-                                <a class="nav-link" title="Home" href="{{ path('app_blog') }}">
+                                <a class="header" title="Home" href="{{ path('app_blog') }}">
                                     Blog
                                 </a>
                             </td>
 {% if is_granted('ROLE_USER') %}
                             <td>
-                                <a class="nav-link" title="" href="{{ path('app_post') }}">
+                                <a class="header" title="" href="{{ path('app_post') }}">
                                    Post
                                 </a>
                             </td>
                             <td>
-                                <a class="nav-link" href="{{ path('app_user_settings') }}">
+                                <a class="header" href="{{ path('app_user_settings') }}">
                                     Settings
                                 </a>
                             </td>
                             <td>
-                                <a class="nav-link" href="{{ path('app_logout') }}">
+                                <a class="header" href="{{ path('app_logout') }}">
                                     Logout
                                 </a>
                             </td>
 {% else %}
                             <td>
-                                <a class="nav-link" href="{{ path('app_login') }}">
+                                <a class="header" href="{{ path('app_login') }}">
                                     Login
                                 </a>
                             </td>
