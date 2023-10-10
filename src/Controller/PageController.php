@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Form\EntropyType;
+use App\Service\Scripture;
 use App\Service\EntropyGenerator;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +33,11 @@ class PageController extends AbstractController
     }
 
     #[Route('/entropy', name: 'app_entropy')]
-    public function entropy(Request $request, EntropyGenerator $entropy): Response
+    public function entropy(
+        Request $request,
+        EntropyGenerator $entropy,
+        Scripture $scripture,
+    ): Response
     {
         $text = NULL;
 
@@ -49,6 +54,7 @@ class PageController extends AbstractController
         return $this->render('page/entropy.html.twig', [
             'form' => $form,
             'text' => $text,
+            'scripture' => $scripture->getVerse(),
         ]);
     }
 }
