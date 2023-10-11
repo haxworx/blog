@@ -55,6 +55,5 @@ if (btn) {
                 console.log(error);
             });
         }
-        console.log(text, length);
     });
 }
