@@ -74,6 +74,11 @@
                                     Blog
                                 </a>
                             </td>
+                            <td>
+                                <a class="header" title="Psalter of Jesus" href="{{ asset('/psalter.txt.utf8') }}">
+                                Psalter
+                                </a>
+                            </td>
 {% if is_granted('ROLE_USER') %}
                             <td>
                                 <a class="header" title="Post" href="{{ path('app_post') }}">
