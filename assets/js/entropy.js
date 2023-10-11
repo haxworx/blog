@@ -1,12 +1,14 @@
 
 let p = document.querySelector('#scripture');
-let btn = document.querySelector('#btn_scripture');
+if (p) {
+    let btn = document.querySelector('#btn_scripture');
 
-btn.addEventListener('click', (event) => {
-    getScripture(event, p);
-});
+    btn.addEventListener('click', (event) => {
+        getScripture(event, p);
+    });
 
-getScripture(null, p);
+    getScripture(null, p);
+}
 
 function getScripture(event, target)
 {
