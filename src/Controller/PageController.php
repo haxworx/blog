@@ -31,26 +31,10 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/entropy', name: 'app_entropy')]
-    public function entropy(
-        Request $request,
-        EntropyGenerator $entropy,
-    ): Response
+    #[Route('/entropy', name: 'app_entropy', methods: ['GET'])]
+    public function entropy(Request $request): Response
     {
-        $text = NULL;
-
-        $form = $this->createForm(EntropyType::class);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $message = $form->getData()['message'];
-            $text = $entropy->create($message);
-        }
-
         return $this->render('page/entropy.html.twig', [
-            'form' => $form,
-            'text' => $text,
         ]);
     }
 }

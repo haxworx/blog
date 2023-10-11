@@ -5,13 +5,15 @@
 {% block body %}
 <p id="scripture"></p><button id="btn_scripture">More</button>
 <hr>
-{{ form_start(form) }}
-{{ form_row(form.message)  }}
-{{ form_row(form.length) }}
-<button type="submit" class="btn btn-sm btn-primary mt-3">Generate</button>
-{{ form_end(form) }}
-{% if text %}
+<label for="message">
+Message
+</label>
+<input type="text" id="message_entropy">
+<label for="length">
+Length
+</label>
+<input type="range" min="10" max="30" id="length_entropy">
+<button id="btn_entropy" type="submit">Generate</button>
 <hr>
-<p>{{ text }}</p>
-{% endif %}
+<p id="text"></p>
 {% endblock %}
