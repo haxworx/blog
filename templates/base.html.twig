@@ -65,23 +65,23 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="header" title="" href="{{ path('app_entropy') }}">
+                                <a class="header" title="Jesus" href="{{ path('app_entropy') }}">
                                     Entropy
                                 </a>
                             </td>
                             <td>
-                                <a class="header" title="Home" href="{{ path('app_blog') }}">
+                                <a class="header" title="Blog" href="{{ path('app_blog') }}">
                                     Blog
                                 </a>
                             </td>
 {% if is_granted('ROLE_USER') %}
                             <td>
-                                <a class="header" title="" href="{{ path('app_post') }}">
+                                <a class="header" title="Post" href="{{ path('app_post') }}">
                                    Post
                                 </a>
                             </td>
                             <td>
-                                <a class="header" href="{{ path('app_user_settings') }}">
+                                <a class="header" title="Settings" href="{{ path('app_user_settings') }}">
                                     Settings
                                 </a>
                             </td>
@@ -92,7 +92,7 @@
                             </td>
 {% else %}
                             <td>
-                                <a class="header" href="{{ path('app_login') }}">
+                                <a class="header" title="Login" href="{{ path('app_login') }}">
                                     Login
                                 </a>
                             </td>
