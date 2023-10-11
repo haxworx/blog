@@ -3,7 +3,7 @@
 {% block title %}Welcome{% endblock %}
 
 {% block body %}
-<p>{{ scripture }}</p>
+<p id="scripture"></p><button id="btn_scripture">Verse</button>
 <hr>
 {{ form_start(form) }}
 {{ form_row(form.message)  }}
