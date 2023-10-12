@@ -3,17 +3,18 @@
 {% block title %}Welcome{% endblock %}
 
 {% block body %}
-<p id="scripture"></p><button id="btn_scripture">More</button>
+<h3>Holy Bible Quote</h3>
+<p id="scripture"></p><button id="btn_scripture">Next</button>
 <hr>
+<h3>Oracle</h3>
 <label for="message">
-Message
+Message Seed
 </label>
 <input type="text" id="message_entropy">
 <label for="length">
-Length
+    Length
 </label>
-<input type="range" min="10" max="30" id="length_entropy">
+<input type="range" min="10" max="30" id="length_entropy" oninput="this.title = this.value">
 <button id="btn_entropy" type="submit">Generate</button>
-<hr>
 <p id="text"></p>
 {% endblock %}

@@ -8,7 +8,6 @@ use App\Form\EntropyType;
 use App\Service\EntropyGenerator;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,7 +31,7 @@ class PageController extends AbstractController
     }
 
     #[Route('/entropy', name: 'app_entropy', methods: ['GET'])]
-    public function entropy(Request $request): Response
+    public function entropy(): Response
     {
         return $this->render('page/entropy.html.twig', [
         ]);
