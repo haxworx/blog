@@ -4,28 +4,38 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\PostRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation as Serializer;
 
+#[ApiResource(
+    normalizationContext: ['groups' => ['post:read']]
+)]
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Serializer\Groups(['post:read'])]
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Serializer\Groups(['post:read'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(length: 255)]
+    #[Serializer\Groups(['post:read'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Serializer\Groups(['post:read'])]
     private ?string $text = null;
 
     #[ORM\Column]
+    #[Serializer\Groups(['post:read'])]
     private ?int $userId = null;
 
     public function getId(): ?int
